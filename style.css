@@ -1,0 +1,121 @@
+i.fa-cloud-sun{
+    font-size: 61px;
+    padding-top: 55px;
+        padding-left: 25px;
+        padding-right: 7px;
+}
+
+.currentTemp{
+    font-size: 56px;
+    
+    
+}
+
+#button-addon2{
+border: 0;
+border-radius:  7px;
+}
+.form-control{
+    border-radius: 7px;
+}
+
+.pValue,.wValue,.hValue{
+    padding: 0%;
+}
+
+
+.tempUnit{
+        position: relative;
+            font-size: 15px;
+            
+            top: -30px;
+        }
+
+.weather-para{
+    font-size: 12px;
+        padding-top: 64px;
+        
+}
+
+.place{
+        font-size: 30px;
+}
+
+.para-button-group{
+    padding-left: 24px;
+    background-color: transparent;
+    transition: all 200ms ease-in-out;
+    /* padding-top: 5px; */
+    
+}
+
+
+.temp-button:hover{
+    cursor:pointer;   
+    
+}
+.precip-button:hover{
+    cursor: pointer;
+}
+
+.wind-button:hover{
+    cursor: pointer;
+}
+
+.temp-button ,.wind-button ,.precip-button{
+    padding: 2px;
+    border: none;
+    background-color: transparent;
+}
+
+.days, .icon ,.high-low, .time-status ,.time-status-details-kind,.time-status-details-temp{ 
+    list-style-type: none;
+    padding:0;
+    margin:0; 
+}
+
+.separator{
+    padding: 4px;
+}
+
+.celcius,.farenheit{
+    text-decoration: none;
+    color: black;
+}
+
+.first-day{
+display: inline-block;
+    padding: 24px;
+    font-size: 20px;
+}
+
+.time-status{
+
+display: inline-block;
+    padding: 27px;
+    font-size: 20px;
+}
+
+.sun,.fa-cloud {
+   
+font-size: 31px;
+    padding-top: 33px;
+    color: rgb(221, 151, 39);
+}
+
+
+.high-low,.time-status-details-temp,.time-status-details{
+    padding-top: 15px;
+    font-size: 15px;
+}
+
+.container{
+    max-width: 50%;
+    font-family:PT sans;
+    margin-top: 30px;
+    background-color: rgb(241, 237, 232);
+}
+
+.border{
+    border-radius: 4%;
+}

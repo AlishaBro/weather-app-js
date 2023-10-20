@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Autour+One&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@400;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+        <script src="https://kit.fontawesome.com/7bf0cede13.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container border">
+        <!-- <input type="text" placeholder="Search"> -->
+        <!-- <input type="button" value="search"> -->
+
+        <form id="search-form" >
+        <div class="input-group mt-4 px-4 mr-5" >
+            <input type="text" class="form-control" autofocus="on" id="search-area"    placeholder="Search" aria-label="Search"
+                aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary " type="submit" id="button-addon2">Search</button>
+            <button class="btn btn-outline-secondary current-temp-btn" type="submit" id="button-addon2">Current Temperature</button>
+        </div>
+    </form>
+
+        <div class="row mb-3">
+            <div class="col-4 temp ">
+                <i class="fa-solid fa-cloud-sun"></i>
+            <!-- </div> -->
+            <!-- <div class="col-3 temp"> -->
+               <span class="currentTemp">21</span> <span class="tempUnit"><a href="#" class="celcius">°C</a>|<a href="#" class="farenheit">°F</a></span>
+            </div>
+            <div class="col-3 mb-2 weather-para">
+            
+                    <div>
+                    Precipitation: <span class="pValue">0%</span>
+                    </div>
+                    <div>
+                    <span id="humi">Humidity:</span> <span class="hValue">59%</span> 
+                    </div>
+                    
+                  <span>Wind:</span>  <span class="wValue">19 km/h</span>
+               
+            </div>
+                <div class="col-4 pt-5">
+                    <div class="row place justify-content-end ">
+                        Berlin
+                    </div>
+                    <div class="row date justify-content-end " id="date">
+                        Wed 11.Oct
+                    </div>
+                    <div class="row kind justify-content-end">
+                        cloudy
+                    </div>
+                </div>
+                
+        </div>
+        <div class="para-button-group">
+            <button  class="temp-button" type="button " >Temperature</button><span class="separator">|</span>
+            <button class="precip-button" type="button ">Precipitation</button><span class="separator">|</span>
+            <button class="wind-button" type="button ">Wind</button>
+        </div>
+
+
+        <div class="time">
+            <ul class="time-status">
+                <li class="time-status-details">2PM
+                    <ul class="time-status-details-kind">
+                        <li>
+                            <i class="fa-solid fa-cloud"></i>
+                            <ul class="time-status-details-temp">
+                                <li>
+                                    23°
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="time-status">
+                <li class="time-status-details">2PM
+                    <ul class="time-status-details-kind"> 
+                        <li>
+                            <i class="fa-solid fa-cloud"></i>
+                            <ul class="time-status-details-temp">
+                                <li>
+                                    23°
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="time-status">
+                <li class="time-status-details">2PM
+                    <ul class="time-status-details-kind">
+                        <li>
+                            <i class="fa-solid fa-cloud"></i>
+                            <ul class="time-status-details-temp">
+                                <li>
+                                    23°
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="time-status">
+                <li  class="time-status-details">2PM
+                    <ul class="time-status-details-kind">
+                        <li>
+                            <i class="fa-solid fa-cloud"></i>
+                            <ul class="time-status-details-temp">
+                                <li>
+                                    23°
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="time-status">
+                <li class="time-status-details">3PM
+                    <ul class="time-status-details-kind">
+                        <li>
+                            <i class="fa-solid fa-cloud"></i>
+                            <ul class="time-status-details-temp">
+                                <li>
+                                    23°
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="time-status">
+                <li class="time-status-details">2PM
+                    <ul class="time-status-details-kind">
+                        <li>
+                            <i class="fa-solid fa-cloud"></i>
+                            <ul class="time-status-details-temp">
+                                <li>
+                                    23°
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="time-status">
+                <li class="time-status-details"> 2PM
+                    <ul class="time-status-details-kind">
+                        <li>
+                            <i class="fa-solid fa-cloud"></i>
+                            <ul class="time-status-details-temp">
+                                <li>
+                                    23°
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="days">
+            <ul class="days">
+                <li class="first-day">
+                    Mon
+                    <ul class="icon">
+                        <li>
+                            <i class="fa-solid fa-sun sun"></i>
+                            <ul class="high-low">
+                                <li> <span class="high">23°</span>14°</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="first-day">
+                    Tue
+                    <ul class="icon">
+                        <li>
+                            <i class="fa-solid fa-sun sun"></i>
+                            <ul class="high-low">
+                                <li> <span class="high">23°</span>14°</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="first-day">Wed
+                    <ul class="icon">
+                        <li>
+                            <i class="fa-solid fa-sun sun"></i>
+                            <ul class="high-low">
+                                <li> <span class="high">23°</span>14°</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="first-day">
+                    Thur  
+                    <ul class="icon">
+                        <li>
+                            <i class="fa-solid fa-sun sun"></i>
+                            <ul class="high-low">
+                                <li> <span class="high">23°</span>14°</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li  class="first-day">Fri
+                    <ul class="icon">
+                        <li>
+                            <i class="fa-solid fa-sun sun"></i>
+                            <ul class="high-low">
+                                <li> <span class="high">23°</span>14°</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li >
+                <li class="first-day">Sat 
+                    <ul class="icon">
+                        <li>
+                            <i class="fa-solid fa-sun sun"></i>
+                            <ul class="high-low">
+                                <li> <span class="high">23°</span>14°</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li >
+                <li class="first-day">Sun
+                    <ul class="icon">
+                        <li>
+                            <i class="fa-solid fa-sun sun"></i>
+                            <ul class="high-low">
+                                <li> <span class="high">23°</span>14°</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+<script src="src.js"></script>
+</body>
+</html>
