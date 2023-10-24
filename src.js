@@ -14,6 +14,7 @@ function processApiResponse(response){
   let responseHumidity=Math.round(response.data.temperature.humidity);
   let responseWind=Math.round(response.data.wind.speed);
   let responseTemperature=Math.round(response.data.temperature.current)
+  celciusTemp=responseTemperature;
   let temperature=document.querySelector(".currentTemp");
   temperature.innerHTML=responseTemperature;
   let humidity=document.querySelector(".hValue");
@@ -29,26 +30,28 @@ function processApiResponse(response){
   htmlWeatherIcon.src=response.data.condition.icon_url;
   
 };
- 
 
+
+UpdateDefaultCity("Berlin") ;
 
  function handleSubmit(event)
  {
   event.preventDefault();
   let placeInput =document.querySelector("#search-area");
   console.log(placeInput.value) ;
-
+  if(placeInput.value){
   let apiKey="b9ffd1od861e4efaf039d5a0c6fbtecd";
-  
   let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${placeInput.value}&key=${apiKey}&units=metric`
   console.log(apiUrl)
-  axios.get(apiUrl).then(processApiResponse);
+  axios.get(apiUrl).then(processApiResponse)}else{
+  alert("Please enter the City")
+  }
 
  }
 
  function  UpdateDefaultCity(city){
   let apiKey="b9ffd1od861e4efaf039d5a0c6fbtecd";
- let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`
+  let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`
   console.log(apiUrl)
   axios.get(apiUrl).then(processApiResponse);
  };
@@ -61,16 +64,19 @@ function processApiResponse(response){
  function handleCelciusClick()
  {
   let temperature=document.querySelector(".currentTemp");
-  console.log(temperature);
-  temperature.innerHTML=21;
+  temperature.innerHTML=celciusTemp;
+  celcius.classList.add("active");
+  farenheit.classList.remove("active");
 
  };
 
- function handleFarenheitClick()
+ function handleFarenheitClick(event)
  {
+  event.preventDefault();
   let temperature=document.querySelector(".currentTemp");
-  console.log(temperature);
-  temperature.innerHTML=66;
+  temperature.innerHTML= Math.round(celciusTemp * 9/5 + 32);
+  farenheit.classList.add("active");
+  celcius.classList.remove("active");
 };
 
   let unit=document.querySelector(".temp");
@@ -87,6 +93,7 @@ function processApiResponse(response){
   let responseHumidity=Math.round(response.data.temperature.humidity);
   let responseWind=Math.round(response.data.wind.speed);
   let responseTemperature=Math.round(response.data.temperature.current)
+  celciusTemp=responseTemperature;
   let temperature=document.querySelector(".currentTemp");
   temperature.innerHTML=responseTemperature;
   let humidity=document.querySelector(".hValue");
@@ -104,24 +111,24 @@ function processApiResponse(response){
  {
   let lat=position.coords.latitude;
   let lon=position.coords.longitude;
-  let apiKey="5863935ee9cca4c02ed68203f807c65b";
- 
+  let apiKey="b9ffd1od861e4efaf039d5a0c6fbtecd";
   let currentApiUrl=`https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   console.log(currentApiUrl)
   axios.get(currentApiUrl).then(currentLocationTemperature);
   
 }
 
- UpdateDefaultCity("Berlin") ;
+let celciusTemp=null;
 
- function handleClick()
- { 
- 
+function handleClick(event)
+{ 
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(showTemperature);
 };
 
- let currentTempButton=document.querySelector(".current-temp-btn")
- currentTempButton.addEventListener("click",handleClick)
+let currentTempButton=document.querySelector(".current-temp-btn");
+currentTempButton.addEventListener("click",handleClick);
+
 
 
 

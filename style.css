@@ -1,23 +1,26 @@
 .currentTemp{
     font-size: 53px;
-padding-top: 48px;
+        padding-top: 38px;
 }
 
 
 #main-icon{
-    padding-left: 16px;
+    padding-left: 6px;
         margin: 0px;
-        padding-top: 40px;
- 
+        padding-top: 19px;
 };
 
 #button-addon2{
 border: 0;
 border-radius:  7px;
+display: inline;
 }
 .form-control{
     border-radius: 7px;
+   
 }
+
+
 
 .pValue,.wValue,.hValue{
     padding: 0%;
@@ -26,15 +29,23 @@ border-radius:  7px;
 
 .tempUnit{
         position: relative;
-            font-size: 15px;
-                top: 63px;
+            font-size: 14px;
+                top: 53px;
   
         }
+ .active {
+    text-decoration: none;
+    cursor:pointer;
+    color: black;
+        }
+
+.farenheit,.celcius{
+     text-decoration: none;
+         }
 
 .weather-para{
     font-size: 15px;
-        padding-top: 64px;
-        
+        padding-top: 57px;
 }
 
 .place{
@@ -86,10 +97,7 @@ text-transform: capitalize;
     padding: 4px;
 }
 
-.celcius,.farenheit{
-    text-decoration: none;
-    color: black;
-}
+
 
 .first-day{
 display: inline-block;
