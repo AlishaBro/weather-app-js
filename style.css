@@ -1,15 +1,15 @@
-i.fa-cloud-sun{
-    font-size: 61px;
-    padding-top: 55px;
-        padding-left: 25px;
-        padding-right: 7px;
+.currentTemp{
+    font-size: 53px;
+padding-top: 48px;
 }
 
-.currentTemp{
-    font-size: 56px;
-    
-    
-}
+
+#main-icon{
+    padding-left: 16px;
+        margin: 0px;
+        padding-top: 40px;
+ 
+};
 
 #button-addon2{
 border: 0;
@@ -27,12 +27,12 @@ border-radius:  7px;
 .tempUnit{
         position: relative;
             font-size: 15px;
-            
-            top: -30px;
+                top: 63px;
+  
         }
 
 .weather-para{
-    font-size: 12px;
+    font-size: 15px;
         padding-top: 64px;
         
 }
@@ -62,13 +62,21 @@ border-radius:  7px;
     cursor: pointer;
 }
 
+.description{
+    
+
+text-transform: capitalize;
+}
+
+
+
 .temp-button ,.wind-button ,.precip-button{
     padding: 2px;
     border: none;
     background-color: transparent;
 }
 
-.days, .icon ,.high-low, .time-status ,.time-status-details-kind,.time-status-details-temp{ 
+.days,.icon,.high-low, .time-status ,.time-status-details-kind,.time-status-details-temp{ 
     list-style-type: none;
     padding:0;
     margin:0; 
