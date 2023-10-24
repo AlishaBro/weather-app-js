@@ -1,13 +1,14 @@
-let dateValue= new Date();
-let daysOfweek=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
-let months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-let date=dateValue.getDate();
-let day=daysOfweek[dateValue.getDay()];
-let month=months[dateValue.getMonth()];
-let formatDate=`${day} ${date}.${month}`;
-let htmldate=document.querySelector("#date");
-htmldate.innerHTML=formatDate;
-
+function updateDate(apiDate){
+  let dateValue= new Date(apiDate*1000);
+  let daysOfweek=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+  let months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  let date=dateValue.getDate();
+  let day=daysOfweek[dateValue.getDay()];
+  let month=months[dateValue.getMonth()];
+  let formatDate=`${day} ${date}.${month}`;
+  let htmldate=document.querySelector("#date");
+  htmldate.innerHTML=formatDate;
+}
 function processApiResponse(response){
   console.log(response);
   
@@ -28,6 +29,7 @@ function processApiResponse(response){
   console.log(response.data.condition.icon_url);
   let htmlWeatherIcon=document.querySelector("#main-icon");
   htmlWeatherIcon.src=response.data.condition.icon_url;
+  updateDate(response.data.time);
   
 };
 
@@ -105,6 +107,7 @@ UpdateDefaultCity("Berlin") ;
   console.log(response.data.condition.icon_url);
   let htmlWeatherIcon=document.querySelector("#main-icon");
   htmlWeatherIcon.src=response.data.condition.icon_url;
+   updateDate(response.data.time);
 };
 
  function showTemperature(position)
