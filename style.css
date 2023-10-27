@@ -47,10 +47,12 @@ display: inline;
 .weather-para{
     font-size: 15px;
         padding-top: 57px;
+        opacity: 70%;
 }
 
 .place{
         font-size: 30px;
+        padding-top: 18px;
 }
 
 
@@ -58,7 +60,7 @@ display: inline;
 
 .description{
     
-
+opacity: 70%;
 text-transform: capitalize;
 }
 
@@ -69,7 +71,7 @@ text-transform: capitalize;
 
 .container{
     max-width: 50%;
-    font-family:PT sans;
+    font-family:Roboto;
     margin-top: 30px;
     background-color: rgb(241, 237, 232);
    
@@ -79,3 +81,21 @@ text-transform: capitalize;
     text-align: center;
 }
 
+#forecast-icons{
+    margin:-10px;
+}
+
+
+.day {
+        font-size: 17px;
+        opacity: 80%;
+    }
+
+    .maxTemp,.minTemp{
+        font-size: 14px;
+        opacity: 70%;
+    }
+
+    .maxTemp{
+        font-weight: bold;
+    }

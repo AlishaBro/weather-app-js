@@ -30,30 +30,44 @@ function processApiResponse(response){
   let htmlWeatherIcon=document.querySelector("#main-icon");
   htmlWeatherIcon.src=response.data.condition.icon_url;
   updateDate(response.data.time);
-  debugger;
-  displayForecast();
+  // debugger;
+  displayForecast(response.data.city);
 };
 
-function displayForecast(){
-let forecastElement=document.querySelector(".forecastWeather");
-console.log(forecastElement);
+function displayForecastWeather(response){
+  let forecastElement=document.querySelector(".forecastWeather");
+console.log(response);
+console.log(response.data.daily[0].time);
 
 let days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+forecastElement.innerHTML=null;
 forecastElement.innerHTML=`<div class="row forecast mt-4 forecastWeather">`;
-days.forEach((day,idx )=> {
+ days.forEach((day,idx )=> {
   if (idx<6){
 forecastElement.innerHTML=forecastElement.innerHTML +` <div class="col-2">
-                            <div class="day">${day}</div>
-                            <div class="icon">
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAdVJREFUaN7tmc1thDAQRimBElwCJVBCSvAxR5fgEiiBEiiBErhyIx24A2cc2WhiAf4ZA1rJkZ4UZZPN9/AwHrON1rr5ZJoqUAWqQBWoAlWgxJf++WaAAGZAAdpD2dfM7zDS/yopAGE6YDoIHMLIdK8KQIAWGIAtQ8Bh/r59bQWQjCBILCkSJIF1XVuAA9Jivm9ROd0ukS0AQTtgA7SH+Vn31EoEBSAMA2YUUAHiJDyWcCtBuidIArZEroJewVEpjQSJjiIgMsMbpHdjf53sCcEWSxEYCQKOyZQhkshZBZYkYEtHeLVPQSGJnHIS0QI2/FIo+L+VILTXOUVA3BD+D3Q/pAqoFIEebUxFQQLJN/Ojo0TEqDG/JgBv1hdgeVNAP4CKPSvkCKiCQc1KSMRs2+x902hO/Z4cYFhgWOQHY8zo9hOKgCCGH71BEXcqHjEBKDft5gowypVH4YeLgKE9ZSO10cxz7z7TFJqxOEUgZxyYbPi+0M4uSRuZPYCnCPBA6TwrYCWWyFbJImo/FTMpM6pAG5CYvDO0LDii7x2JNAtdSGxuQyp41Q87UqkHW8NJzYsbw+8d6Y5Hi+7qbw8IyOIPd9HRVD8qUD8fqAJVoApUgSrwqfwCJ6xaZshM+xMAAAAASUVORK5CYII=" alt="weather-icon">
+                            <div class="day">${days[new Date((response.data.daily[idx].time)*1000).getDay()]}</div>
+                            <div class="icon" id="forecast-icons">
+                                <img src="${response.data.daily[idx].condition.icon_url}" alt="weather-icon">
                             </div>
                             <div class="maxtemp minTemp">
-                               4°<span> 9°</span> 
+                               ${Math.round(response.data.daily[idx].temperature.minimum)}°<span> <strong>${Math.round(response.data.daily[idx].temperature.maximum)}°</strong></span> 
                             </div>
                         `
+                        console.log(response.data.daily[idx].condition.icon_url)
 
-}})
+ }
+}
+)
 forecastElement.innerHTML=forecastElement.innerHTML +` </div`
+
+}
+function displayForecast(city){
+  
+  let apiKey="b9ffd1od861e4efaf039d5a0c6fbtecd";
+  let apiUrl=`https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`
+  console.log(apiUrl)
+  axios.get(apiUrl).then(displayForecastWeather);
+
 };
 
 
@@ -132,6 +146,7 @@ UpdateDefaultCity("Berlin") ;
   let htmlWeatherIcon=document.querySelector("#main-icon");
   htmlWeatherIcon.src=response.data.condition.icon_url;
    updateDate(response.data.time);
+    displayForecast(response.data.city);
 };
 
  function showTemperature(position)
