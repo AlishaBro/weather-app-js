@@ -14,8 +14,18 @@ function processApiResponse(response){
 
   if(response.data.message===
 "City not found"){
-  alert("city not found!")}else{
+  let errorHtml=document.querySelector(".error");
+  // errorHtml.innerHTML="❗️City not found! Please enter another city.";}else
+   errorHtml.innerHTML="❗️City not found! Please enter another city.";
+  errorHtml.classList.add("border");
+  errorHtml.classList.add("border-danger");
+  errorHtml.classList.add("rounded" );}else
   
+  {
+    let errorHtml=document.querySelector(".error");
+    errorHtml.innerHTML="";
+  let flvHtml=document.querySelector(".flv")
+  flvHtml.innerHTML=`${(Math.round(response.data.temperature.feels_like))}°C`
   let responseHumidity=Math.round(response.data.temperature.humidity);
   let responseWind=Math.round(response.data.wind.speed);
   let responseTemperature=Math.round(response.data.temperature.current)
@@ -89,7 +99,12 @@ UpdateDefaultCity("Berlin") ;
   let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${placeInput.value}&key=${apiKey}&units=metric`
   console.log(apiUrl)
   axios.get(apiUrl).then(processApiResponse)}else{
-  alert("Please enter the City")
+    let errorHtml=document.querySelector(".error");
+  errorHtml.innerHTML="❗️Please enter the City.";
+  errorHtml.classList.add("border" );
+   errorHtml.classList.add("border-danger" );
+  errorHtml.classList.add("rounded" );
+
   }
 
  }
@@ -133,9 +148,18 @@ UpdateDefaultCity("Berlin") ;
  function currentLocationTemperature(response)
  {
   console.log(response);
-    if(response.data.message===
+   if(response.data.message===
 "City not found"){
-  alert("city not found!")}else{
+  let errorHtml=document.querySelector(".error");
+  errorHtml.innerHTML="❗️City not found! Please enter another city.";
+errorHtml.classList.add("border");
+errorHtml.classList.add("border-danger");
+errorHtml.classList.add("rounded" );}else
+  {
+    let errorHtml=document.querySelector(".error");
+    errorHtml.innerHTML="";
+    let flvHtml=document.querySelector(".flv")
+  flvHtml.innerHTML=`${(Math.round(response.data.temperature.feels_like))}°C`
   let htmlPlace=document.querySelector(".place");
   htmlPlace.innerHTML=response.data.city;
   let responseHumidity=Math.round(response.data.temperature.humidity);
