@@ -99,3 +99,8 @@ text-transform: capitalize;
     .maxTemp{
         font-weight: bold;
     }
+
+    .footer{
+        font-family: roboto;
+        font-size:12px;
+        text-align: center;}
