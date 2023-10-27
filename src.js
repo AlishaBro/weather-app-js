@@ -9,17 +9,25 @@ function updateDate(apiDate){
   let htmldate=document.querySelector("#date");
   htmldate.innerHTML=formatDate;
 }
+
+function hide(){
+  
+  let errorHtml=document.querySelector(".error");
+    errorHtml.innerHTML="";
+    errorHtml.classList.remove("border");
+}
 function processApiResponse(response){
   console.log(response);
 
   if(response.data.message===
 "City not found"){
   let errorHtml=document.querySelector(".error");
-  // errorHtml.innerHTML="❗️City not found! Please enter another city.";}else
    errorHtml.innerHTML="❗️City not found! Please enter another city.";
   errorHtml.classList.add("border");
   errorHtml.classList.add("border-danger");
-  errorHtml.classList.add("rounded" );}else
+  errorHtml.classList.add("rounded" );
+  document.addEventListener("click", hide);
+}else
   
   {
     let errorHtml=document.querySelector(".error");
@@ -44,22 +52,18 @@ function processApiResponse(response){
   let htmlWeatherIcon=document.querySelector("#main-icon");
   htmlWeatherIcon.src=response.data.condition.icon_url;
   updateDate(response.data.time);
-  // debugger;
   displayForecast(response.data.city);
   }
 };
 
 function displayForecastWeather(response){
   let forecastElement=document.querySelector(".forecastWeather");
-console.log(response);
-console.log(response.data.daily[0].time);
-
-let days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-forecastElement.innerHTML=null;
-forecastElement.innerHTML=`<div class="row forecast mt-4 forecastWeather">`;
- days.forEach((day,idx )=> {
+  let days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  forecastElement.innerHTML=null;
+  forecastElement.innerHTML=`<div class="row forecast mt-4 forecastWeather">`;
+  days.forEach((day,idx )=> {
   if (idx<6){
-forecastElement.innerHTML=forecastElement.innerHTML +` <div class="col-2">
+  forecastElement.innerHTML=forecastElement.innerHTML +` <div class="col-2">
                             <div class="day">${days[new Date((response.data.daily[idx].time)*1000).getDay()]}</div>
                             <div class="icon" id="forecast-icons">
                                 <img src="${response.data.daily[idx].condition.icon_url}" alt="weather-icon">
@@ -80,39 +84,38 @@ function displayForecast(city){
   
   let apiKey="b9ffd1od861e4efaf039d5a0c6fbtecd";
   let apiUrl=`https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`
-  console.log(apiUrl)
+  
   axios.get(apiUrl).then(displayForecastWeather);
 
 };
 
-
-
 UpdateDefaultCity("Berlin") ;
 
- function handleSubmit(event)
- {
+function handleSubmit(event){
   event.preventDefault();
   let placeInput =document.querySelector("#search-area");
   console.log(placeInput.value) ;
-  if(placeInput.value){
+
+  if(placeInput.value)
+  {
   let apiKey="b9ffd1od861e4efaf039d5a0c6fbtecd";
   let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${placeInput.value}&key=${apiKey}&units=metric`
-  console.log(apiUrl)
-  axios.get(apiUrl).then(processApiResponse)}else{
-    let errorHtml=document.querySelector(".error");
+  axios.get(apiUrl).then(processApiResponse)}
+  else
+  {
+  let errorHtml=document.querySelector(".error");
   errorHtml.innerHTML="❗️Please enter the City.";
   errorHtml.classList.add("border" );
-   errorHtml.classList.add("border-danger" );
+  errorHtml.classList.add("border-danger" );
   errorHtml.classList.add("rounded" );
-
+  document.addEventListener("click", hide);
   }
 
- }
+}
 
  function  UpdateDefaultCity(city){
   let apiKey="b9ffd1od861e4efaf039d5a0c6fbtecd";
   let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`
-  console.log(apiUrl)
   axios.get(apiUrl).then(processApiResponse);
  };
 
@@ -148,17 +151,20 @@ UpdateDefaultCity("Berlin") ;
  function currentLocationTemperature(response)
  {
   console.log(response);
-   if(response.data.message===
-"City not found"){
+  if(response.data.message===
+  "City not found")
+  {
   let errorHtml=document.querySelector(".error");
   errorHtml.innerHTML="❗️City not found! Please enter another city.";
-errorHtml.classList.add("border");
-errorHtml.classList.add("border-danger");
-errorHtml.classList.add("rounded" );}else
+  errorHtml.classList.add("border");
+  errorHtml.classList.add("border-danger");
+  errorHtml.classList.add("rounded" );
+  document.addEventListener("click", hide);}
+  else
   {
-    let errorHtml=document.querySelector(".error");
-    errorHtml.innerHTML="";
-    let flvHtml=document.querySelector(".flv")
+  let errorHtml=document.querySelector(".error");
+  errorHtml.innerHTML="";
+  let flvHtml=document.querySelector(".flv")
   flvHtml.innerHTML=`${(Math.round(response.data.temperature.feels_like))}°C`
   let htmlPlace=document.querySelector(".place");
   htmlPlace.innerHTML=response.data.city;
@@ -177,8 +183,8 @@ errorHtml.classList.add("rounded" );}else
   console.log(response.data.condition.icon_url);
   let htmlWeatherIcon=document.querySelector("#main-icon");
   htmlWeatherIcon.src=response.data.condition.icon_url;
-   updateDate(response.data.time);
-    displayForecast(response.data.city);
+  updateDate(response.data.time);
+  displayForecast(response.data.city);
   }
 };
 
@@ -190,7 +196,6 @@ errorHtml.classList.add("rounded" );}else
   let currentApiUrl=`https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   console.log(currentApiUrl)
   axios.get(currentApiUrl).then(currentLocationTemperature);
-  
 }
 
 let celciusTemp=null;

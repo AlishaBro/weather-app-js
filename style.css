@@ -1,3 +1,8 @@
+
+body{
+    background-color: rgb(244 239 237);
+}
+
 .currentTemp{
     font-size: 53px;
     padding-top: 38px;
@@ -11,29 +16,29 @@
 };
 
 #button-addon2{
-border: 0;
-border-radius:  7px;
-display: inline;
+    border: 0;
+    border-radius:  7px;
+    display: inline;
 }
 
 .form-control{
     border-radius: 7px;
-   
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);  
 }
 
 
 
-.pValue,.wValue,.hValue{
+.wValue,.hValue{
     padding: 0%;
 }
 
 
 .tempUnit{
-        position: relative;
-            font-size: 14px;
-                top: 53px;
+    position: relative;
+    font-size: 14px;
+    top: 53px;
   
-        }
+}
  .active {
     text-decoration: none;
     cursor:pointer;
@@ -41,27 +46,24 @@ display: inline;
         }
 
 .farenheit,.celcius{
-     text-decoration: none;
+    text-decoration: none;
          }
 
 .weather-para{
     font-size: 14px;
-        padding-top: 57px;
-        opacity: 70%;
+    padding-top: 57px;
+    opacity: 70%;
 }
 
 .place{
-        font-size: 30px;
-        padding-top: 18px;
+    font-size: 30px;
+    padding-top: 18px;
 }
-
-
-
 
 .description{
     
-opacity: 70%;
-text-transform: capitalize;
+    opacity: 70%;
+    text-transform: capitalize;
 }
 
 
@@ -70,16 +72,17 @@ text-transform: capitalize;
 }
 
 .container-weather{
-    max-width: 70%;
+    display: block;
+    margin: 0 auto;
+    max-width: 66%;
     font-family:Roboto;
     margin-top: 30px;
-    /* background-color: rgb(241, 237, 232); */
-    background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
-  
-        padding: 20px 16px 24px;
-   
-}
+    background-color:#f8f9fb;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px 16px 24px;
+   }
+
+
 
 .forecast{
     text-align: center;
@@ -91,31 +94,38 @@ text-transform: capitalize;
 
 
 .day {
-        font-size: 17px;
-        opacity: 80%;
+    font-size: 17px;
+    opacity: 80%;
     }
 
-    .maxTemp,.minTemp{
-        font-size: 14px;
-        opacity: 70%;
+.maxTemp,.minTemp{
+    font-size: 14px;
+    opacity: 70%;
     }
 
-    .maxTemp{
-        font-weight: bold;
+.maxTemp{
+      font-weight: bold;
     }
 
-    .footer{
-        font-family: roboto;
-        font-size:12px;
+.footer{
+      font-family: roboto;
+      font-size:14px;
+      text-align: center;
+      color:#6d6262
+    }
+
+.github{
+        
+      color:#6d6262
+
     }
        
 .error{
     
     color: red;
-       
-        text-align: center;
-        padding: 10px;
-        margin-left: 25px;
+    text-align: center;
+    padding: 7px;
+    margin-left: 25px;
         
      
 
