@@ -11,6 +11,10 @@ function updateDate(apiDate){
 }
 function processApiResponse(response){
   console.log(response);
+
+  if(response.data.message===
+"City not found"){
+  alert("city not found!")}else{
   
   let responseHumidity=Math.round(response.data.temperature.humidity);
   let responseWind=Math.round(response.data.wind.speed);
@@ -32,6 +36,7 @@ function processApiResponse(response){
   updateDate(response.data.time);
   // debugger;
   displayForecast(response.data.city);
+  }
 };
 
 function displayForecastWeather(response){
@@ -128,6 +133,9 @@ UpdateDefaultCity("Berlin") ;
  function currentLocationTemperature(response)
  {
   console.log(response);
+    if(response.data.message===
+"City not found"){
+  alert("city not found!")}else{
   let htmlPlace=document.querySelector(".place");
   htmlPlace.innerHTML=response.data.city;
   let responseHumidity=Math.round(response.data.temperature.humidity);
@@ -147,6 +155,7 @@ UpdateDefaultCity("Berlin") ;
   htmlWeatherIcon.src=response.data.condition.icon_url;
    updateDate(response.data.time);
     displayForecast(response.data.city);
+  }
 };
 
  function showTemperature(position)
